@@ -1,1 +1,1 @@
-# myhyprland
+# hyprland-dotfiles
