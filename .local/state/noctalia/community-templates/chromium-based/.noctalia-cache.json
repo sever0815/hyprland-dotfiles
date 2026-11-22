@@ -1,0 +1,11 @@
+{
+  "files": {
+    "README.md": "ad66e6f763aafb319d6d7cef7a746abd",
+    "apply.sh": "ecfc6386a3694adf5339807a4e0888c2",
+    "color.json": "1abefe038e9ec1806f7b021956024901",
+    "privileged.sh": "74a43cd05fd773826b7d470b87599ec2",
+    "template.toml": "630b15c67a7b75a02d88151b21b09a06",
+    "test.sh": "2c726c4ea7e74e2793a2edc16e4c7ddb"
+  },
+  "version": 1
+}
