@@ -26,14 +26,18 @@ hl.monitor({
     output   = "eDP-1",
     mode     = "1920x1080@60.02",
     position = "auto",
-    scale    = "1",
+    scale    = 1,
+    bitdepth = 10,
+    cm = "edid"
 })
 
 hl.monitor({
     output   = "HDMI-A-1",
     mode     = "1920x1080@144.00",
     position = "auto",
-    scale    = "1",
+    scale    = 1,
+    bitdepth = 10,
+    cm = "edid"
 })
 
 hl.bind("switch:on:Lid Switch", function()
@@ -54,6 +58,7 @@ local terminal    = "alacritty"
 local fileManager = "thunar"
 local menu = "wofi"
 local browser = "firefox"
+local volume = "pavucontrol"
 
 -------------------
 ---- AUTOSTART ----
@@ -211,6 +216,8 @@ hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "
 --     border_size = 0,
 --     rounding    = 0,
 -- })
+
+-- Window Rule --
 hl.window_rule({
 	match = { class = "csgo_linux64" }, immediate = true,
 	match = { class = "java" }, immediate = true,
@@ -219,7 +226,19 @@ hl.window_rule({
 	match = { class = "horizon-client" }, immediate = true,
 })
 
+hl.window_rule({
+    name = "thunar-rename-dialog",
+    match = {
+        class = "^(thunar)$",
+        title = "^Rename.*",
+    },
+    float = true,
+    center = true,
+    size = "420 140",
+})
 
+
+-- Workspace Rule --
 hl.workspace_rule({workspace = "1", monitor = "HDMI-A-1", default = true})
 hl.workspace_rule({workspace = "2", monitor = "HDMI-A-1", default = true})
 hl.workspace_rule({workspace = "3", monitor = "HDMI-A-1", default = true})
@@ -354,6 +373,7 @@ hl.bind("ALT + SHIFT + Tab", hl.dsp.exec_cmd(ipc .. "window-switcher hold revers
 
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("noctalia msg session lock"))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(browser))
+hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(volume))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
@@ -503,6 +523,7 @@ hl.window_rule({
     move  = "20 monitor_h-120",
     float = true,
 })
+
 
 
 -- For Noctalia Color templates
